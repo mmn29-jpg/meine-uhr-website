@@ -21,8 +21,14 @@
       box-sizing: border-box;
     }
 
+    .clock-grid {
+      width: min(920px, 100%);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
     .clock-box {
-      width: min(520px, 100%);
       text-align: center;
       padding: 36px 24px;
       border: 2px solid #ffffff33;
@@ -35,45 +41,72 @@
       font-size: 18px;
     }
 
-    #clock {
+    .clock {
       margin: 0;
-      font-size: 64px;
+      font-size: 56px;
     }
 
-    #date {
+    .date {
       margin: 14px 0 0;
       font-size: 20px;
       color: #d8e2f0;
+    }
+
+    @media (max-width: 760px) {
+      .clock-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .clock {
+        font-size: 44px;
+      }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <section class="clock-box">
-      <p class="label">Aktuelle Uhrzeit</p>
-      <h1 id="clock">00:00:00</h1>
-      <p id="date">Datum wird geladen</p>
+    <section class="clock-grid">
+      <article class="clock-box">
+        <p class="label">Deutschland</p>
+        <h1 class="clock" id="germany-clock">00:00:00</h1>
+        <p class="date" id="germany-date">Datum wird geladen</p>
+      </article>
+
+      <article class="clock-box">
+        <p class="label">Vietnam</p>
+        <h1 class="clock" id="vietnam-clock">00:00:00</h1>
+        <p class="date" id="vietnam-date">Datum wird geladen</p>
+      </article>
     </section>
   </main>
 
   <script>
-    function updateClock() {
-      const now = new Date();
+    function formatTime(timeZone) {
+      return new Date().toLocaleTimeString("de-DE", {
+        timeZone: timeZone
+      });
+    }
 
-      const time = now.toLocaleTimeString("de-DE");
-      const date = now.toLocaleDateString("de-DE", {
+    function formatDate(timeZone) {
+      return new Date().toLocaleDateString("de-DE", {
+        timeZone: timeZone,
         weekday: "long",
         day: "2-digit",
         month: "long",
         year: "numeric"
       });
-
-      document.querySelector("#clock").textContent = time;
-      document.querySelector("#date").textContent = date;
     }
 
-    updateClock();
-    setInterval(updateClock, 1000);
+    function updateClocks() {
+      document.querySelector("#germany-clock").textContent = formatTime("Europe/Berlin");
+      document.querySelector("#germany-date").textContent = formatDate("Europe/Berlin");
+
+      document.querySelector("#vietnam-clock").textContent = formatTime("Asia/Ho_Chi_Minh");
+      document.querySelector("#vietnam-date").textContent = formatDate("Asia/Ho_Chi_Minh");
+    }
+
+    updateClocks();
+    setInterval(updateClocks, 1000);
   </script>
 </body>
 </html>
