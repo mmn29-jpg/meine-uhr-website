@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git und GitHub</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #18212f;
+    }
+
+    .page {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    header {
+      margin-bottom: 28px;
+      padding: 28px;
+      border-radius: 8px;
+      background: #18212f;
+      color: white;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 42px;
+    }
+
+    .intro {
+      margin: 0;
+      font-size: 18px;
+      color: #d8e2f0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid #d8e2f0;
+      border-radius: 8px;
+      background: white;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 22px;
+      line-height: 1.7;
+    }
+
+    .example {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 8px;
+      background: #edf3ff;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .comparison {
+      margin-top: 18px;
+    }
+
+    .comparison p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 720px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>Git und GitHub</h1>
+      <p class="intro">Ein einfacher Vergleich: Was ist das Programm, was ist die Plattform?</p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Git</h2>
+        <ul>
+          <li>Git ist ein Programm für Versionsverwaltung.</li>
+          <li>Es speichert Änderungen an deinem Code.</li>
+          <li>Du kannst ältere Versionen wiederfinden.</li>
+          <li>Git funktioniert auch ohne Internet auf deinem Computer.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>GitHub</h2>
+        <ul>
+          <li>GitHub ist eine Website und Plattform im Internet.</li>
+          <li>Dort kannst du Git-Projekte online speichern.</li>
+          <li>Andere Menschen können deinen Code sehen oder mitarbeiten.</li>
+          <li>GitHub nutzt Git, ist aber nicht dasselbe wie Git.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card comparison">
+      <h2>Der Unterschied kurz gesagt</h2>
+      <p>
+        Git ist das Werkzeug auf deinem Computer. GitHub ist der Ort im Internet,
+        wo du dein Git-Projekt hochladen und teilen kannst.
+      </p>
+      <div class="example">Git = Werkzeug · GitHub = Online-Plattform</div>
+    </section>
+  </main>
+</body>
+</html>
