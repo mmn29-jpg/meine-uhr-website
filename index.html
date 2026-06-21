@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meine Uhr Website</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #172033;
+      color: white;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .clock-grid {
+      width: min(920px, 100%);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .clock-box {
+      text-align: center;
+      padding: 36px 24px;
+      border: 2px solid #ffffff33;
+      border-radius: 8px;
+      background: #ffffff12;
+    }
+
+    .label {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .clock {
+      margin: 0;
+      font-size: 56px;
+    }
+
+    .date {
+      margin: 14px 0 0;
+      font-size: 20px;
+      color: #d8e2f0;
+    }
+
+    @media (max-width: 760px) {
+      .clock-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .clock {
+        font-size: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="clock-grid">
+      <article class="clock-box">
+        <p class="label">Deutschland</p>
+        <h1 class="clock" id="germany-clock">00:00:00</h1>
+        <p class="date" id="germany-date">Datum wird geladen</p>
+      </article>
+
+      <article class="clock-box">
+        <p class="label">Vietnam</p>
+        <h1 class="clock" id="vietnam-clock">00:00:00</h1>
+        <p class="date" id="vietnam-date">Datum wird geladen</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    function formatTime(timeZone) {
+      return new Date().toLocaleTimeString("de-DE", {
+        timeZone: timeZone
+      });
+    }
+
+    function formatDate(timeZone) {
+      return new Date().toLocaleDateString("de-DE", {
+        timeZone: timeZone,
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+    }
+
+    function updateClocks() {
+      document.querySelector("#germany-clock").textContent = formatTime("Europe/Berlin");
+      document.querySelector("#germany-date").textContent = formatDate("Europe/Berlin");
+
+      document.querySelector("#vietnam-clock").textContent = formatTime("Asia/Ho_Chi_Minh");
+      document.querySelector("#vietnam-date").textContent = formatDate("Asia/Ho_Chi_Minh");
+    }
+
+    updateClocks();
+    setInterval(updateClocks, 1000);
+  </script>
+</body>
+</html>
